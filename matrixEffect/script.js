@@ -73,6 +73,14 @@ const fps = 45;
 const nextFrame = 1000/fps;
 var timer = 0;
 
+let gradient = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+gradient.addColorStop("0.1", "#FF5C33");
+gradient.addColorStop("0.2", "#FF66B3");
+gradient.addColorStop("0.4", "#CCCCFF");
+gradient.addColorStop("0.6", "#B3FFFF");
+gradient.addColorStop("0.8", "#80FF80");
+gradient.addColorStop("0.9", "#FFFF33");
+
 function animate(timestamp = 0)
 {
     const deltaTime = timestamp - lastTime;
@@ -83,7 +91,8 @@ function animate(timestamp = 0)
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.textAlign = 'center';
-        ctx.fillStyle = "#0AFF0A";
+        // ctx.fillStyle = "#0AFF0A";
+        ctx.fillStyle = gradient;
         ctx.fontSize = Effect.fontSize + 'px monospace';
         effect.symbols.forEach(symbol => symbol.draw(ctx));
         timer = 0;
